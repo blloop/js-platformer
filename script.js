@@ -71,7 +71,7 @@ function createPlatforms() {
     });
 }
 function renderPlatform(input) {
-    ctx.fillStyle = platforms[input].color;
+    ctx.fillStyle = "#5d6d7e";
     ctx.rect(
         platforms[input].x, 
         platforms[input].y, 
@@ -80,15 +80,23 @@ function renderPlatform(input) {
     );
 }
 function renderPlayer() {
-    ctx.fillStyle = "#d40000";
+    ctx.fillStyle = "black";
     ctx.fillRect(
         player.x, 
         player.y, 
         player.width, 
-        player.height);
+        player.height
+    );
+    ctx.fillStyle = " #abebc6 ";
+    ctx.fillRect(
+        player.x + 2, 
+        player.y + 2, 
+        player.width - 4, 
+        player.height - 4
+    );
 }
 function renderCanvas() {
-    ctx.fillStyle = "#5CD3FF"; 
+    ctx.fillStyle = "#60d6ff"; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 function keyCheck() {
@@ -123,10 +131,14 @@ function engine(){
     for (var i = 0; i < platforms.length; i++) {
         renderPlatform(i);
         collide = collision(platforms[i]);
-        if (collide) {
+        if (collide == "down") {
             player.ground = true;
             player.jump = false;
-            player.y = platforms[i].y - player.height;
+        } else if (collide == "up") {
+            player.yVel = 0;
+        } else if (collide == "side") {
+            player.xVel = 0;
+            player.jump = false;
         }
     }   
     if (player.ground) {
@@ -138,12 +150,33 @@ function engine(){
     renderPlayer();    
     requestAnimationFrame(engine);
 }
-function collision(input) {
-    if (player.x + player.width > input.width &&
-        input.x + input.width > player.x && 
-        player.y + player.height > input.y) {
-        return true;
-    } else return false;
+function collision(object) {
+    var minX = (player.width / 2) + (object.width / 2),
+        minY = (player.height / 2) + (object.height / 2),
+        spaceX = player.x + (player.width / 2) - 
+            object.x - (object.width / 2), 
+        spaceY = player.y + (player.height / 2) - 
+            object.y - (object.height / 2);
+    if (Math.abs(spaceX) < minX && Math.abs(spaceY) < minY) {
+        if (minX - Math.abs(spaceX) > minY - Math.abs(spaceY)) {
+            if (spaceY > 0) {
+                player.y += (minY - Math.abs(spaceY));
+                return "up";
+            } else {
+                player.y -= (minY - Math.abs(spaceY));
+                return "down";
+            }
+        } else {
+            if (spaceX > 0) {
+                player.x += (minX - Math.abs(spaceX));
+            } else {
+                player.x -= (minX - Math.abs(spaceX));
+            }
+            return "side";
+        }
+    } else {
+        return null;
+    }
 }
 canvas.width = width;
 canvas.height = height;
