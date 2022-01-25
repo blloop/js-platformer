@@ -1,14 +1,14 @@
 html {
 	margin: 0;
-	background-color: burlywood;
+	background-color: #5584ac;
 	font-family: Georgia, monospace;
 }
 
 #title {
-	width: 300px;
+	width: auto;
 	height: 460px;
 	padding: 20px;
-	background-color:  #fadbd8  ;
+	background-color:  #f6f2d4  ;
 	vertical-align: top;
 }
 .line {
@@ -22,7 +22,7 @@ html {
 	margin: 15px;	
 }
 .refresh {
-	width: 100px;
+	width: 250px;
 	height: 40px;
 	font-size: 20px;
 }

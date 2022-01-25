@@ -92,6 +92,18 @@ function renderPlayer() {
     ctx.strokeRect(player.x, player.y + 16, 24, 20); 
     ctx.fillStyle = "#cc0000";
     ctx.fillRect(player.x + 2, player.y + 16, 20, 4);
+    ctx.fillStyle = "black";
+    ctx.fillRect(player.x + 10, player.y + 6, 4, 4);
+    ctx.fillRect(player.x - 3, player.y - 2, 30, 3);
+    ctx.fillRect(player.x + 3, player.y - 6, 18, 4)
+    if (player.face == 'right') {
+        ctx.fillRect(player.x + 18, player.y + 24, 3, 3);
+        ctx.fillRect(player.x + 18, player.y + 30, 3, 3);
+    } else {
+        ctx.fillRect(player.x + 3, player.y + 24, 3, 3);
+        ctx.fillRect(player.x + 3, player.y + 30, 3, 3);
+    }
+
     ctx.lineWidth = 3;
     ctx.strokeStyle = "#cc0000";
     ctx.beginPath();
@@ -119,7 +131,7 @@ function renderPlayer() {
     ctx.stroke();
 }
 function renderCanvas() {
-    ctx.fillStyle = "#d6eaf8 "; 
+    ctx.fillStyle = "#d6eaf8"; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 function keyCheck() {
