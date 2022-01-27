@@ -31,9 +31,10 @@ var canvas = document.getElementById("canvas"),
     }, 
     gravity = 0.5, 
     friction = 0.7, 
-    collide = false;
-    keys = [], 
-    platforms = [];
+    collide = false,
+    keys = [],
+    platforms = [],
+    snow = [],
     breakable = ['key'];
 
 function pushPlat1() {
@@ -134,6 +135,20 @@ function renderCanvas() {
     ctx.fillStyle = "#d6eaf8"; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
+function buildSnow() {
+    for (let i = 0; i < 50; i++) {
+        snow.push({
+            x: (Math.random() * canvas.width),
+            y: (Math.random() * canvas.height)
+        });
+    }
+}
+function renderSnow() {
+    ctx.fillStyle = "white";
+    for (let i = 0; i < snow.length; i++) {
+        ctx.fillRect(snow[i].x, snow[i].y, 5, 5);
+    }
+}
 function keyCheck() {
     if (keys[38] || keys[87]) {
         if (!player.jump && player.ground) {
@@ -164,6 +179,14 @@ function engine(){
     renderCanvas();   
     player.xVel *= friction;
     player.yVel += gravity;
+    for (let i = 0; i < snow.length; i++) {
+        snow[i].x += 4 * (Math.random() - 0.5);
+        snow[i].y += 2.5 * Math.random();
+        if (snow[i].y > canvas.height) {
+            snow[i].y = 0;
+            snow[i].x = Math.random() * canvas.width;
+        }
+    }
     player.ground = false;
     for (var i = 0; i < platforms.length; i++) {
         renderPlatform(i);
@@ -192,7 +215,8 @@ function engine(){
     player.x += player.xVel;
     player.y += player.yVel;
     ctx.fill();
-    renderPlayer();    
+    renderPlayer();
+    renderSnow();
     requestAnimationFrame(engine);
 }
 function collision(object) {
@@ -226,6 +250,7 @@ function collision(object) {
 canvas.width = width;
 canvas.height = height;
 pushPlat1();
+buildSnow();
 document.body.addEventListener("keydown", function (input) {
     keys[input.keyCode] = true;
 });
