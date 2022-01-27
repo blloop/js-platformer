@@ -12,7 +12,10 @@ Simple *HTML, CSS* to create website, *Javascript* to render platformer engine.
   1) Functioning platformer engine
   2) Detailed character sprite
   3) 1 level with multiple platforms
+  4) Falling Snow Animation!
   
   **Upcoming Features**
   1) Falling Snow Animation
-  2) Multiple Levels
+  2) Keys and Doors
+  3) Obstacles
+  4) Enemies
