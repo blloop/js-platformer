@@ -1,5 +1,5 @@
 # Javascript Platformer
-Platformer coded in pure javascript, playable through a web browser.  
+Platformer coded in pure Javascript, playable through a web browser.  
 
 Simple *HTML, CSS* to create website, *Javascript* to render platformer engine. 
 
@@ -15,7 +15,7 @@ Simple *HTML, CSS* to create website, *Javascript* to render platformer engine.
   4) Falling Snow Animation!
   
   **Upcoming Features**
-  1) Falling Snow Animation
+  1) Multiple levels
   2) Keys and Doors
   3) Obstacles
   4) Enemies
