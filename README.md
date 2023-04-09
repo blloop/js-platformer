@@ -1,12 +1,13 @@
 # Javascript Platformer
-Platformer coded in pure Javascript, playable through a web browser.  
 
-Simple *HTML, CSS* to create website, *Javascript* to render platformer engine. 
+Simple platformer written with vanilla JavaScript using HTML Canvas.
 
-- Playable by downloading the source folder and opening index.html
-- Files are linked together
-- Code can be modified with most most text editors
-- script.js modifies any canvas with id: <canvas id="canvas"><\/canvas>
+Playable at [this](https://bill-yu.dev/js-platformer) link
+
+### How It Works
+- The HTML file specifies a canvas element with an ID
+- The CSS file adds basic styling to the webpage
+- The JavaScript file targets the canvas element by ID and renders the game
   
  **Current Features**
   1) Functioning platformer engine
