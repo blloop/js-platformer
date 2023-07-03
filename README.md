@@ -2,7 +2,7 @@
 
 Simple platformer written with vanilla JavaScript using HTML Canvas.
 
-Playable at [this](https://blloop.com/js-platformer) link
+Playable at [this](https://blloop.github.io/js-platformer) link
 
 ### How It Works
 - The HTML file specifies a canvas element with an ID
